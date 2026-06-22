@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>中彩网 · 信息聚合 · 彩市动态</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, "PingFang SC", "Microsoft YaHei", sans-serif;
+      background: #f2f4f6;
+      color: #1e2a3a;
+      line-height: 1.6;
+      padding: 1.6rem;
+    }
+    .page {
+      max-width: 1160px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 2.4rem;
+    }
+
+    /* 卡片通用设计 */
+    .card {
+      background: #ffffff;
+      border: 1px solid #e6eaef;
+      border-radius: 18px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03), 0 2px 6px rgba(0, 0, 0, 0.02);
+      padding: 2rem 2.4rem;
+      transition: box-shadow 0.2s;
+    }
+    .card:hover {
+      box-shadow: 0 8px 24px rgba(0, 20, 40, 0.06);
+    }
+
+    /* hero区 */
+    .hero {
+      text-align: center;
+      padding: 3.6rem 2.4rem;
+      background: #ffffff;
+      border: 1px solid #e6eaef;
+      border-radius: 18px;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.02);
+    }
+    .hero h1 {
+      font-size: 2.6rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      color: #0f1c2b;
+      margin-bottom: 0.75rem;
+    }
+    .hero .sub {
+      font-size: 1.1rem;
+      color: #526476;
+      max-width: 680px;
+      margin: 0 auto 1.2rem;
+      border-bottom: 1px dashed #dce3ec;
+      padding-bottom: 1.2rem;
+    }
+    .hero .tagline {
+      display: inline-block;
+      background: #e9edf3;
+      padding: 0.4rem 1.4rem;
+      border-radius: 40px;
+      font-size: 0.9rem;
+      color: #2b4057;
+    }
+
+    /* 两栏 / 网格 */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.8rem;
+    }
+    .grid-3 {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1.8rem;
+    }
+
+    .section-title {
+      font-size: 1.5rem;
+      font-weight: 500;
+      margin-bottom: 1.2rem;
+      padding-left: 0.4rem;
+      border-left: 4px solid #3f6b9c;
+      padding-left: 0.8rem;
+      color: #122433;
+    }
+
+    /* 特点卡片 */
+    .feature-item {
+      background: #f9fafc;
+      border-radius: 14px;
+      padding: 1.4rem 1.2rem;
+      border: 1px solid #eef1f6;
+    }
+    .feature-item h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 0.3rem;
+      color: #1b3147;
+    }
+    .feature-item p {
+      font-size: 0.95rem;
+      color: #3d536a;
+      margin-top: 0.2rem;
+    }
+
+    .faq-item {
+      padding: 1rem 0;
+      border-bottom: 1px solid #e6eaef;
+    }
+    .faq-item:last-child {
+      border-bottom: none;
+    }
+    .faq-q {
+      font-weight: 600;
+      font-size: 1rem;
+      margin-bottom: 0.2rem;
+      color: #1a3047;
+    }
+    .faq-a {
+      font-size: 0.95rem;
+      color: #3f5770;
+      padding-left: 1rem;
+    }
+
+    .footer-links {
+      background: #edf0f5;
+      border-radius: 18px;
+      padding: 1.8rem 2rem;
+      border: 1px solid #dce2ec;
+      font-size: 0.95rem;
+      color: #384f67;
+      text-align: center;
+    }
+    .footer-links a {
+      color: #1e4b7a;
+      text-decoration: none;
+      border-bottom: 1px dotted #b2c3d9;
+    }
+    .footer-links a:hover {
+      color: #0b2d4f;
+      border-bottom: 1px solid #0b2d4f;
+    }
+
+    .btn-soft {
+      display: inline-block;
+      background: #eef2f8;
+      padding: 0.4rem 1.2rem;
+      border-radius: 30px;
+      font-size: 0.9rem;
+      color: #1f3b59;
+      border: 1px solid #d5dfeb;
+      text-decoration: none;
+      transition: 0.2s;
+    }
+    .btn-soft:hover {
+      background: #dce5f0;
+      border-color: #b3c8dd;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #dde3ed;
+      margin: 1rem 0;
+    }
+
+    @media (max-width: 780px) {
+      body { padding: 1rem; }
+      .grid-2, .grid-3 { grid-template-columns: 1fr; }
+      .hero h1 { font-size: 2rem; }
+      .card { padding: 1.6rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- hero 区域 -->
+  <div class="hero">
+    <h1>聚焦彩市 · 理性参考</h1>
+    <div class="sub">
+      围绕彩票信息、开奖数据与行业动态，<br>
+      为兴趣用户提供聚合型内容浏览平台。
+    </div>
+    <div class="tagline">信息整理 · 非购彩引导</div>
+  </div>
+
+  <!-- 优势区：卡片网格 -->
+  <div class="card">
+    <div class="section-title">平台特点</div>
+    <div class="grid-3">
+      <div class="feature-item">
+        <h3>⚡ 开奖更新</h3>
+        <p>双色球、大乐透、3D 等热门彩种的开奖号码与历史对比，辅助走势观察。</p>
+      </div>
+      <div class="feature-item">
+        <h3>📊 数据呈现</h3>
+        <p>基于公开数据整理开奖详情、奖池余额、中奖注数等，便于横向参考。</p>
+      </div>
+      <div class="feature-item">
+        <h3>📰 资讯聚合</h3>
+        <p>彩票相关公告、政策调整及行业新闻，以客观视角汇总呈现。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 说明区 / 场景介绍 -->
+  <div class="card">
+    <div class="section-title">内容说明</div>
+    <div style="display: flex; flex-direction: column; gap: 0.8rem;">
+      <p><strong>信息范围：</strong>站点主要采集国内依法发行的福利彩票、体育彩票相关公开信息，包括开奖号码、销量简报、派奖活动等。所有数据均来自官方渠道，本站仅做整理展示。</p>
+      <p><strong>使用场景：</strong>适合对彩票历史数据、开奖规律感兴趣的普通用户进行浏览查阅。不提供购彩建议、预测服务，不引导投注行为。</p>
+      <p><strong>立场声明：</strong> <a href="https://now-zhcw.com" style="color:#1e4b7a; text-decoration:underline; font-weight:500;">中彩网</a> 作为信息聚合页面，坚持合法合规运营，提醒用户理性参与，未成年人不得购彩。</p>
+    </div>
+    <hr>
+    <div style="display: flex; flex-wrap: wrap; gap: 1.2rem; justify-content: space-between; align-items: center;">
+      <span style="font-size:0.9rem; color:#3d5a79;">内容仅供参考，请以官方公告为准。</span>
+      <a href="https://now-zhcw.com" class="btn-soft">中彩网</a>
+    </div>
+  </div>
+
+  <!-- FAQ 摘要 -->
+  <div class="card">
+    <div class="section-title">常见疑问摘要</div>
+    <div class="faq-item">
+      <div class="faq-q">如何查看最新开奖号码？</div>
+      <div class="faq-a">首页会按时间倒序展示最近一期开奖结果，也可通过分类筛选具体彩种。数据一般于开奖后 30 分钟内更新。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">历史开奖数据可以查询多久？</div>
+      <div class="faq-a">目前支持最近 100 期以内开奖信息，部分彩种支持更长时间跨度。页面提供简单的走势图与冷热号统计。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">站点是否提供购彩或合买服务？</div>
+      <div class="faq-a">不提供。本站为纯粹的信息聚合站，不涉及任何购彩交易、合买、代购或返利，请用户通过合法线下或经批准的线上渠道购买。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">数据准确吗？</div>
+      <div class="faq-a">所有开奖及公告数据均来自中国福利彩票发行管理中心、国家体育总局体育彩票管理中心官方网站，如有个别延迟或误差请以官网为准。</div>
+    </div>
+    <div style="text-align:right; margin-top:0.8rem;">
+      <a href="https://now-zhcw.com" style="color:#2f5a82; text-decoration: none; border-bottom:1px dotted #a4bbd3;">中彩网</a>
+    </div>
+  </div>
+
+  <!-- 底部链接区域 -->
+  <div class="footer-links">
+    <p style="margin-bottom:0.4rem;">
+      信息聚合 · 理性参考 · 拒绝赌博<br>
+      本站内容仅供个人学习与了解，不构成任何投资或购彩建议。
+    </p>
+    <p style="margin-bottom:0.3rem;">
+      <a href="https://now-zhcw.com">中彩网</a>  · 数据来源：中国福彩网 / 中国体彩网
+    </p>
+    <p style="font-size:0.85rem; color:#496583; margin-top:0.5rem;">
+      © 2025 now-zhcw.com · 非官方站点 · 内容整理
+    </p>
+  </div>
+
+</div>
+</body>
+</html>
